@@ -15,4 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('contacts', 'ContactController');
+Route::prefix('api')->group(function () {
+    Route::resource('contacts', 'ContactController');
+});
+
