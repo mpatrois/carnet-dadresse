@@ -1,7 +1,9 @@
+/* eslint-disable no-param-reassign */
 module.exports = {
   indexPath: 'app.html',
   assetsDir: 'vue-dist',
-  outputDir: 'vue/dist',
+  outputDir: '../public/static',
+  publicPath: '/static/',
   devServer: {
     proxy: {
       '/api': {

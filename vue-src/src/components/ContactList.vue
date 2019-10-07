@@ -49,7 +49,7 @@ export default {
   computed: {
     filteredContacts() {
       return this.contacts.filter((contact) => {
-        const allFields = `${contact.first_name} ${contact.first_name} ${contact.email}`;
+        const allFields = `${contact.first_name} ${contact.last_name} ${contact.email}`;
         return allFields.toLowerCase().includes(this.searchQuery.toLowerCase());
       }).filter((contact) => {
         if (this.activedSources.length === 0) {
