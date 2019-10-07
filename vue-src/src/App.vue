@@ -1,14 +1,23 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
-    <router-view/>
+    <div id="contact-nav">
+      <ContactList/>
+    </div>
+    <div id="main-view">
+      <router-view/>
+    </div>
   </div>
 </template>
 
-<style>
+<script>
+import ContactList from './components/ContactList.vue';
+
+export default {
+  components: { ContactList },
+};
+</script>
+
+<style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -16,16 +25,40 @@
   text-align: center;
   color: #2c3e50;
 }
-#nav {
-  padding: 30px;
+
+html, body{
+  height: 100%;
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+$size-contact-bar: 300px;
+
+#contact-nav{
+  width: $size-contact-bar;
+  height: 100%;
+  position: fixed;
+  top:0px;
+  left: 0px;
+  overflow-y: auto;
+  z-index: 10;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+#main-view{
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  padding-left: 200px;
+  box-sizing: border-box;
+  overflow-y: auto;
 }
+
+ul{
+  padding: 0px;
+  li{
+    list-style-type: none;
+  }
+}
+
 </style>

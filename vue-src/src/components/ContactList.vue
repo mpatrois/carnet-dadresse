@@ -1,22 +1,31 @@
 <template>
     <div>
-        <input v-model="searchQuery" />
-        <ul>
+        <input v-model="searchQuery" placeholder="Search Contacts" />
+        <ul class="source-list">
             <li v-for="source in sources" :key="source.id">
-
                 <label :for="'source-'+source.id">{{source.name}}
-                     <input
-                        type="checkbox"
+                     <input type="checkbox"
                         :id="'source-'+source.id"
-                        :value="source.id" v-model="activedSources">
+                        :value="source.id"
+                        v-model="activedSources">
                 </label>
             </li>
         </ul>
-        <ul>
-            <li v-for="contact in filteredContacts" :key="contact.id">
+        <ul class="contact-list">
+          <template v-for="contact in filteredContacts">
+            <router-link
+              tag="li"
+              :to="{ name:'ContactDetail', params: { contactId: contact.id }}"
+              :key="contact.id">
                 {{contact.first_name}}
-                {{contact.last_name}}
-            </li>
+                <strong>
+                  {{contact.last_name}}
+                </strong>
+                <div>
+                  {{contact.email}}
+                </div>
+            </router-link>
+          </template>
         </ul>
     </div>
 </template>
@@ -70,3 +79,13 @@ export default {
   },
 };
 </script>
+
+<style scoped lang="scss">
+.contact-list{
+  text-align: left;
+  li.router-link-active{
+    background: blue;
+    color: white;
+  }
+}
+</style>

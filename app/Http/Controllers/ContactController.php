@@ -45,8 +45,8 @@ class ContactController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Contact $contact)
-    {
-        //
+    {   $contact->load('sources');
+        return $contact;
     }
 
     /**

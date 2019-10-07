@@ -15,7 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Route::prefix('api')->group(function () {
     Route::resource('contacts', 'ContactController');
+    Route::get('/sources', function () {
+        return \App\Source::all();
+    });
 });
-

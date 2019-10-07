@@ -17,10 +17,18 @@ use Illuminate\Support\Str;
 */
 
 $factory->define(Contact::class, function (Faker $faker) {
+    $email = $faker->unique()->safeEmail;
     return [
-        'last_name' => $faker->name,
-        'first_name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'avatar_path' => '/img/default_avatar.png'
+        'last_name' => $faker->lastName,
+        'first_name' => $faker->firstName,
+        'email' => $faker->unique()->email,
+        'avatar_path' => 'https://i.pravatar.cc/150?u='.$email,
+        'mobile_phone' => $faker->e164PhoneNumber,
+        'work_phone' => $faker->e164PhoneNumber,
+        'street' => $faker->streetAddress,
+        'postal_code' => $faker->postcode,
+        'city' => $faker->city,
+        'other_info' => $faker->realText($maxNbChars = 200),
+        'notes' => $faker->realText($maxNbChars = 200)
     ];
 });
